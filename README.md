@@ -1,6 +1,6 @@
 # Game of Thrones-Themed Google Play Web Project
 
-![GOT Logo](WebDev/ui_comp/0_GOT-Logo.png)
+<img src="WebDev/ui_comp/0_GOT-Logo.png" alt="GOT Logo" width="100"/>
 
 ## Overview
 This project is a **Game of Thrones (GOT)–themed Google Play–style web interface** that showcases apps and games in an **immersive, fantasy-inspired environment**. It combines **interactive UI components, aesthetic design elements, and functional app previews**, offering users a unique experience reminiscent of the GOT universe.
