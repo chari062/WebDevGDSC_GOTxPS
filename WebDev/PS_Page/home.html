@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Realm Home | GOT Play Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./home.css" />
+  </head>
+  <body data-theme="dark">
+    <div id="app">
+      <!-- Removed React popup; using vanilla modal card -->
+      <!-- Top bar with theme toggle -->
+      <header class="topbar">
+        <div class="brand">
+          <span class="sigil">♛</span>
+          <span class="brand-text">GOT Play Store</span>
+        </div>
+        <div class="controls">
+          <button id="themeToggle" class="toggle" aria-label="Toggle theme" title="Toggle Light/Dark">
+            <span class="toggle-icon" aria-hidden="true">☾</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Snow container overlay -->
+      <div id="snow-container" aria-hidden="true"></div>
+
+      <!-- Center Play Store Logo -->
+      <div class="hero-logo">
+        <img class="got-logo-center" alt="GOT Play Store" src="file:///Z:/Projects/WebDev/ui_comp/0_GOT-Logo.png" />
+        <div class="hero-caption">GOT Play Store</div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-wrap">
+        <div class="search-container">
+          <input id="searchInput" type="text" placeholder="Search the Seven Kingdoms..." aria-label="Search apps" />
+          <button id="searchBtn" type="button">Search</button>
+        </div>
+      </div>
+
+      <!-- App Grid -->
+      <main class="grid-wrap">
+        <div class="apps-grid" id="appsGrid">
+          <!-- 10 app cards -->
+          <article class="app-card" data-app="cod">
+            <img class="app-logo" alt="Call of Duty Mobile" src="file:///Z:/Projects/WebDev/ui_comp/Apps/1.jpeg" />
+            <h3 class="app-title">Call of Duty Mobile</h3>
+          </article>
+          <article class="app-card" data-app="instagram">
+            <img class="app-logo" alt="Instagram" src="file:///Z:/Projects/WebDev/ui_comp/Apps/2.jpeg" />
+            <h3 class="app-title">Instagram</h3>
+          </article>
+          <article class="app-card" data-app="bgmi">
+            <img class="app-logo" alt="BGMI" src="file:///Z:/Projects/WebDev/ui_comp/Apps/3.jpeg" />
+            <h3 class="app-title">BGMI</h3>
+          </article>
+          <article class="app-card" data-app="linkedin">
+            <img class="app-logo" alt="LinkedIn" src="file:///Z:/Projects/WebDev/ui_comp/Apps/4.jpeg" />
+            <h3 class="app-title">LinkedIn</h3>
+          </article>
+          <article class="app-card" data-app="makemytrip">
+            <img class="app-logo" alt="MakeMyTrip" src="file:///Z:/Projects/WebDev/ui_comp/Apps/5.jpeg" />
+            <h3 class="app-title">MakeMyTrip</h3>
+          </article>
+          <article class="app-card" data-app="zomato">
+            <img class="app-logo" alt="Zomato" src="file:///Z:/Projects/WebDev/ui_comp/Apps/6.jpeg" />
+            <h3 class="app-title">Zomato</h3>
+          </article>
+          <article class="app-card" data-app="paytm">
+            <img class="app-logo" alt="Paytm" src="file:///Z:/Projects/WebDev/ui_comp/Apps/7.jpeg" />
+            <h3 class="app-title">Paytm</h3>
+          </article>
+          <article class="app-card" data-app="whatsapp">
+            <img class="app-logo" alt="WhatsApp" src="file:///Z:/Projects/WebDev/ui_comp/Apps/8.jpeg" />
+            <h3 class="app-title">WhatsApp</h3>
+          </article>
+          <article class="app-card" data-app="lenskart">
+            <img class="app-logo" alt="Lenskart" src="file:///Z:/Projects/WebDev/ui_comp/Apps/9.jpeg" />
+            <h3 class="app-title">Lenskart</h3>
+          </article>
+          <article class="app-card" data-app="digilocker">
+            <img class="app-logo" alt="DigiLocker" src="file:///Z:/Projects/WebDev/ui_comp/Apps/10.jpeg" />
+            <h3 class="app-title">DigiLocker</h3>
+          </article>
+        </div>
+      </main>
+
+      <!-- App Detail Modal (parchment) -->
+      <dialog id="appModal" class="app-modal">
+        <div class="modal-content">
+          <button class="modal-close" aria-label="Close"><img class="close-icon" src="file:///Z:/Projects/WebDev/ui_comp/Cross_Button.png" alt="Close" /></button>
+          <div class="modal-header">
+            <div class="sigil-frame">
+              <img id="modalIcon" alt="App Icon" />
+            </div>
+            <div class="modal-titles">
+              <h2 id="modalTitle" class="cinzel"></h2>
+              <p id="modalTag" class="tagline"></p>
+            </div>
+          </div>
+          <div id="modalDesc" class="modal-desc"></div>
+          <div id="modalGallery" class="modal-gallery"></div>
+          <button id="installBtn" class="install-btn">Install &amp; Begin Quest</button>
+        </div>
+      </dialog>
+
+      <!-- In-development modal card -->
+      <dialog id="indevModal" class="indev-modal">
+        <div class="indev-card">
+          <div class="indev-dragon">
+            <img src="file:///Z:/Projects/WebDev/ui_comp/1LP_GOT-FireDragon(ALT).png" alt="Dragon" />
+            <span class="breath"></span>
+          </div>
+          <h3 class="indev-title">App is still under construction</h3>
+          <div class="indev-actions">
+            <button class="indev-primary">Back to Realm</button>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- Footer with rotating quotes -->
+      <footer class="footer">
+        <div class="quotes" id="quotes"></div>
+        <button id="ravenEgg" class="raven-egg" aria-label="Three-Eyed Raven">👁‍🗨</button>
+      </footer>
+    </div>
+
+    <!-- Audio assets -->
+    <audio id="ravenSound" preload="auto">
+      <source src="file:///Z:/Projects/WebDev/ui_comp/2HP_RavenSound.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="hoverSword" preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0f2b5dc8e5.mp3?filename=sword-clash-01-185299.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="hodor" preload="auto">
+      <source src="file:///Z:/Projects/WebDev/ui_comp/2HP_Hodor.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="./home.js"></script>
+  </body>
+  </html>
+
+

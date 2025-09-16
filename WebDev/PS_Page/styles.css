@@ -1,0 +1,315 @@
+/*
+  Game of Thrones Themed Login Page Styles
+  - Two themes: light and dark with image backgrounds and gradient overlays
+  - Frosted glass login card with themed glows
+  - Smooth fade-ins, hover effects, responsive layout
+*/
+
+:root {
+  --bg-image-light: url('file:///Z:/Projects/WebDev/ui_comp/1LP_Throne-BG%20(White).jpg');
+  --bg-image-dark: url('file:///Z:/Projects/WebDev/ui_comp/1LP_Throne-BG%20(Dark).jpg');
+  --overlay-light: rgba(255, 255, 255, 0.6);
+  --overlay-dark: rgba(0, 0, 0, 0.6);
+  --text-primary: #e8e8e8;
+  --text-secondary: #cfcfcf;
+  --text-primary-light: #1f1f1f;
+  --text-secondary-light: #333;
+  --accent-icy: #7fd2ff;
+  --accent-ember: #ff4b3e;
+  --card-bg: rgba(255, 255, 255, 0.14);
+  --card-border: rgba(255, 255, 255, 0.25);
+  --shadow-icy: 0 10px 35px rgba(127, 210, 255, 0.35);
+  --shadow-ember: 0 10px 35px rgba(255, 75, 62, 0.35);
+  --transition-fast: 200ms ease;
+  --transition-medium: 400ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Merriweather', ui-serif, Georgia, 'Times New Roman', Times, serif;
+  background-color: #000;
+  color: var(--text-primary);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  transition: background-image 800ms ease-in-out, color var(--transition-medium), background-color var(--transition-medium);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background image and overlay controlled via data-theme */
+body[data-theme="dark"] {
+  background-image: linear-gradient(var(--overlay-dark), var(--overlay-dark)), var(--bg-image-dark);
+}
+body[data-theme="light"] {
+  background-image: linear-gradient(var(--overlay-light), var(--overlay-light)), var(--bg-image-light);
+  color: var(--text-primary-light);
+}
+
+/* Global fade-in */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  animation: bgFadeIn 1000ms ease both;
+}
+
+@keyframes bgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#app {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0));
+}
+
+body[data-theme="light"] .topbar {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.5px;
+}
+
+.brand .sigil { font-size: 18px; }
+.brand .brand-text { font-weight: 700; }
+
+.controls .toggle {
+  border: 0;
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: inherit;
+  backdrop-filter: blur(6px);
+  transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Center hero logo */
+.center-logo {
+  display: grid;
+  place-items: center;
+  margin: 8px 0 18px 0;
+}
+.got-logo-center {
+  width: min(280px, 70vw);
+  height: auto;
+  opacity: 0.98;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.55)) drop-shadow(0 0 28px rgba(127,210,255,0.25));
+  transition: transform 500ms ease, filter 500ms ease;
+}
+.got-logo-center:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 12px 36px rgba(0,0,0,0.65)) drop-shadow(0 0 36px rgba(127,210,255,0.35));
+}
+.controls .toggle:hover { transform: translateY(-1px); }
+body[data-theme="dark"] .controls .toggle:hover { box-shadow: 0 0 12px rgba(255,75,62,0.45); }
+body[data-theme="light"] .controls .toggle:hover { box-shadow: 0 0 12px rgba(127,210,255,0.55); }
+
+.center {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 36px 28px;
+  border-radius: 15px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-ember);
+  animation: cardFadeUp 700ms ease both;
+}
+
+body[data-theme="light"] .login-card { box-shadow: var(--shadow-icy); }
+
+@keyframes cardFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+  margin: 0 0 8px 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0 0 20px 0;
+  text-align: center;
+  color: var(--text-secondary);
+}
+body[data-theme="light"] .subtitle { color: var(--text-secondary-light); }
+
+.google-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 12px 16px;
+  background: transparent;
+  color: inherit;
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition-medium), transform var(--transition-fast), background var(--transition-medium);
+}
+
+.google-btn .google-icon { width: 20px; height: 20px; }
+.google-btn .btn-text { letter-spacing: 0.4px; }
+
+/* Button hover effects per theme */
+body[data-theme="dark"] .google-btn:hover {
+  box-shadow: 0 0 0 2px rgba(255,75,62,0.35), 0 10px 35px rgba(255,75,62,0.35);
+  background: radial-gradient(120px 60px at var(--x,50%) var(--y,50%), rgba(255,75,62,0.25), transparent 60%);
+}
+body[data-theme="light"] .google-btn:hover {
+  box-shadow: 0 0 0 2px rgba(127,210,255,0.45), 0 10px 35px rgba(127,210,255,0.35);
+  background: radial-gradient(120px 60px at var(--x,50%) var(--y,50%), rgba(127,210,255,0.25), transparent 60%);
+}
+
+.legal {
+  margin-top: 16px;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.85;
+}
+.legal a { color: inherit; }
+
+/* Sword Easter Egg */
+.sword-easter-egg {
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  width: 120px;
+  transform: translateY(-50%) rotate(25deg) scale(0.9);
+  filter: drop-shadow(0 0 10px rgba(127,210,255,0.65));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
+.google-btn:hover .sword-easter-egg {
+  opacity: 1;
+  transform: translateY(-50%) rotate(10deg) scale(1);
+}
+
+/* Dragon */
+.dragon {
+  position: fixed;
+  top: -120px;
+  right: -180px;
+  width: 360px;
+  transform: rotate(-8deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 998;
+}
+
+.dragon.fly {
+  animation: dragonFlyFromRight 4800ms ease-in-out forwards;
+}
+
+@keyframes dragonFlyFromRight {
+  0% { opacity: 0; transform: translate(15%, -20%) rotate(-8deg) scale(0.95); }
+  10% { opacity: 1; }
+  50% { transform: translate(-40vw, 35vh) rotate(6deg) scale(1.15); }
+  100% { transform: translate(-110vw, 70vh) rotate(12deg) scale(1.25); opacity: 0; }
+}
+
+/* Success popup */
+.success-popup {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-family: 'Uncial Antiqua', 'Cinzel', serif;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  opacity: 0;
+  z-index: 999;
+}
+
+body[data-theme="light"] .success-popup {
+  background: rgba(255,255,255,0.8);
+  color: #111;
+}
+
+.success-popup.show {
+  animation: popupIn 420ms ease-out forwards, popupOut 800ms ease-in 3600ms forwards;
+}
+
+@keyframes popupIn { from { opacity: 0; transform: translateX(-50%) translateY(12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+@keyframes popupOut { to { opacity: 0; transform: translateX(-50%) translateY(12px); } }
+
+/* Snowfall */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  z-index: 997;
+  color: white;
+  opacity: 0.3;
+  font-size: 12px;
+  animation: fall linear infinite;
+  pointer-events: none;
+}
+@keyframes fall {
+  to {
+    transform: translateY(100vh) translateX(20px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-card { max-width: 500px; padding: 24px 20px; }
+}
+@media (max-width: 480px) {
+  .login-card { max-width: 100%; padding: 20px 16px; }
+  .title { font-size: 22px; }
+  .subtitle { font-size: 14px; }
+  .dragon { width: 200px; }
+}
+
+

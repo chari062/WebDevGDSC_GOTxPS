@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entering the Realm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-theme="dark">
+    <!-- Background overlay managed via CSS variables per theme -->
+    <div id="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="sigil" aria-hidden="true">♛</span>
+          <span class="brand-text">Entering the Realm</span>
+        </div>
+        <div class="controls">
+          <button id="themeToggle" class="toggle" aria-label="Toggle theme" title="Toggle Light/Dark">
+            <span class="toggle-icon" aria-hidden="true">☾</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="center">
+        <div class="center-logo">
+          <img class="got-logo-center" alt="GOT Play Store" src="file:///Z:/Projects/WebDev/ui_comp/0_GOT-Logo.png" />
+        </div>
+        <section class="login-card" role="dialog" aria-labelledby="login-title" aria-describedby="login-desc">
+          <h1 id="login-title" class="title">Enter the Realm of Thrones</h1>
+          <p id="login-desc" class="subtitle">Log in to continue your quest on the GOT Play Store.</p>
+
+          <button id="googleLogin" class="google-btn" aria-label="Sign in with Google">
+            <img class="google-icon" alt="Google" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" />
+            <span class="btn-text">Sign in with Google</span>
+            <!-- Sword Easter Egg -->
+            <img class="sword-easter-egg" alt="Valyrian Sword" src="file:///Z:/Projects/WebDev/ui_comp/1LP_ValerynSword-EasterEgg.png" />
+          </button>
+
+          <p class="legal">By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+        </section>
+      </main>
+
+      <!-- Success dragon and popup -->
+      <img id="dragon" class="dragon" alt="Drogon" src="file:///Z:/Projects/WebDev/ui_comp/1LP_GOT-FireDragon(ALT).png" />
+      <div id="successPopup" class="success-popup" role="status" aria-live="polite">You have successfully logged in!</div>
+
+      <!-- Ambient snowfall container (generated via JS) -->
+      <div id="snow-container" aria-hidden="true"></div>
+
+      <!-- Audio: GOT Theme (played softly on success) -->
+      <audio id="gotTheme" preload="auto">
+        <source src="file:///Z:/Projects/WebDev/ui_comp/1LP_GOT-Theme.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+  </html>
+
+
